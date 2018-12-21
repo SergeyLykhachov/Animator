@@ -73,7 +73,7 @@ public class AnimationElement extends TransformGroup {
 			}
 		}
 		this.initialAlpha = builder.alpha;
-		this.alpha = builder.alpha;//1.0f;
+		this.alpha = builder.alpha;
 		this.cumulativeSpacialInterpolator = new ArrayList<>();
 		//this.cumulativeImageInterpolator = new TreeSet<>(
 		//	(interpolator1, interpolator2) -> {
@@ -113,7 +113,6 @@ public class AnimationElement extends TransformGroup {
 				0,
 				0
 			);
-			//this.cumulativeImageInterpolator.add(sequencr);
 			this.width = sequencr.getFrameWidth();
 			this.height = sequencr.getFrameHeight();
 		} else {
@@ -125,7 +124,6 @@ public class AnimationElement extends TransformGroup {
 				(int) this.width,
 				(int) this.height
 			);
-			//this.cumulativeImageInterpolator.add(sequencr);
 		}
 		////////////////////////////////////////////////////////////////////////
 		this.imageSequencer = sequencr;
