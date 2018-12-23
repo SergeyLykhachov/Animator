@@ -2,7 +2,6 @@ package com.yahoo.slykhachov.animator.model.interpolators;
 
 import java.awt.geom.AffineTransform;
 import com.yahoo.slykhachov.animator.util.function.SextConsumer;
-//import static com.yahoo.slykhachov.animator.model.AnimationModel.*;
 
 public class ScaleInterpolator implements SpacialInterpolator {
 	private double intermediateScaleFactor;
@@ -43,7 +42,7 @@ public class ScaleInterpolator implements SpacialInterpolator {
 				)
 			);
 		} else {
-			this.delayMillis -= this.frameRate;//FRAME_RATE;
+			this.delayMillis -= this.frameRate;
 			java.util.stream.Stream.of(atArr)
 				.forEach(
 					e -> this.consumer.accept(

@@ -46,9 +46,9 @@ public class AnimationView extends JPanel implements Observer {
 		);
 		g2d.drawRenderedImage(
 			this.animationModel.getRootAnimationElement()
-							   .getImage(),
+				.getImage(),
 			this.animationModel.getRootAnimationElement()
-							   .getTransform()
+				.getTransform()
 		);
 		while (childrenQueue.size() != 0) {
 			AnimationElement e = (AnimationElement) childrenQueue.poll();

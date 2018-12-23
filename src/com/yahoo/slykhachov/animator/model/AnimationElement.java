@@ -26,7 +26,6 @@ public class AnimationElement extends TransformGroup {
 	private float alpha;
 	private float initialAlpha;
 	private List<SpacialInterpolator> cumulativeSpacialInterpolator;
-	//private SortedSet<ImageInterpolator> cumulativeImageInterpolator;
 	private List<ImageInterpolator> cumulativeImageInterpolator;
 	private ImageSequencer imageSequencer;
 	private AffineTransform scaleLessTransform;
@@ -75,20 +74,12 @@ public class AnimationElement extends TransformGroup {
 		this.initialAlpha = builder.alpha;
 		this.alpha = builder.alpha;
 		this.cumulativeSpacialInterpolator = new ArrayList<>();
-		//this.cumulativeImageInterpolator = new TreeSet<>(
-		//	(interpolator1, interpolator2) -> {
-		//		if (interpolator1 instanceof ImageSequencer) {
-		//			return interpolator2 instanceof ImageSequencer ? 0 : -1;
-		//		} else {
-		//			return interpolator2 instanceof ImageSequencer ? 1 : 0;
-		//		}
-		//});
 		this.cumulativeImageInterpolator = new ArrayList<>();
+		this.scaleLessTransform = new AffineTransform();
 		if (this.width < 500 && this.height < 500) {
 			super.at.translate(this.x - this.width / 2, this.y - this.height / 2);
+			this.scaleLessTransform.translate(this.x - this.width / 2, this.y - this.height / 2);
 		}
-		this.scaleLessTransform = new AffineTransform();
-		//this.scaleLessTransform.concatenate(super.at);
 	}
 	private static BufferedImage rescaleImage(BufferedImage img, int width, int height) {
 	    Image i = img.getScaledInstance(
@@ -167,7 +158,7 @@ public class AnimationElement extends TransformGroup {
 							transform.translate(valX, valY);
 							transform.scale(scale, 1.0);
 							transform.translate(-ex, -why);
-						}
+					}
 			)
 		);
 	}
@@ -188,7 +179,7 @@ public class AnimationElement extends TransformGroup {
 							transform.translate(valX, valY);
 							transform.scale(1.0, scale);
 							transform.translate(-ex, -why);
-						}
+					}
 			)
 		);
 	}
@@ -309,14 +300,10 @@ public class AnimationElement extends TransformGroup {
 					}
 			});
 		} else {
-			super.at.translate(
-				(this.x - this.width / 2) + (parentWidth / 2),
-				(this.y - this.height / 2) + (parentHeight / 2)
-			);
-			this.scaleLessTransform.translate(
-				(this.x - this.width / 2) + (parentWidth / 2),
-				(this.y - this.height / 2) + (parentHeight / 2)
-			);
+			double ex = (this.x - this.width / 2) + (parentWidth / 2) - parentX;
+			double why = (this.y - this.height / 2) + (parentHeight / 2) - parentY;
+			super.at.translate(ex, why);
+			this.scaleLessTransform.translate(ex, why);
 		}
 		for (TransformGroup tg : this.list) {
 			((AnimationElement) tg).update(
@@ -338,7 +325,6 @@ public class AnimationElement extends TransformGroup {
 		return this.width;
 	}
 	public BufferedImage getImage() {
-		//return this.image;
 		if (this.image == null) {
 			return null;
 		}
@@ -368,7 +354,6 @@ public class AnimationElement extends TransformGroup {
 	public List<SpacialInterpolator> getSpacialInterpolators() {
 		return this.cumulativeSpacialInterpolator;
 	}
-	//public SortedSet<ImageInterpolator> getImageInterpolators() {
 	public List<ImageInterpolator> getImageInterpolators() {
 		return this.cumulativeImageInterpolator;
 	}

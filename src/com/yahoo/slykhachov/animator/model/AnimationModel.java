@@ -20,29 +20,27 @@ public class AnimationModel implements Subject {
 	
 	public AnimationModel(Dimension dimension, int frameRate) {
 		this.frameRate = frameRate;
-		//FRAME_RATE = frameRate;
 		this.rootAe = new AnimationElement.Builder(0, 0, this.frameRate)
 			.width((int) dimension.getWidth())
 			.height((int) dimension.getHeight())
-			.setBackground(Color.ORANGE)
+			.setBackground(Color.GRAY)
 			.build();
 		this.timer = new Timer(
 			this.frameRate,
-			//FRAME_RATE,
 			ae -> {
 				this.rootAe.update();
 				this.notifyObservers();
 		});
-		//this.timer.start();////
+		//this.timer.start();
 		this.isOnPause = true;
 		this.observers = new ArrayList<>();
 		this.animationElementList = new ArrayList<>();
 		AnimationElement ae1 = new AnimationElement.Builder(0, 0, this.frameRate)
-		//AnimationElement ae1 = new AnimationElement.Builder(100, 100)
+		//AnimationElement ae1 = new AnimationElement.Builder(100, 100, this.frameRate)
 			.image(".//img//img.png")
 			//.width(100)
 			//.height(100)
-			.alpha(0.0f)
+			.alpha(1.0f)
 			//.setBackground(Color.BLUE)
 			.build();
 		this.rootAe.addChild(ae1);
@@ -71,46 +69,39 @@ public class AnimationModel implements Subject {
 		this.rootAe.addChild(ae5);
 		this.runnable = () -> {
 			ae1.translate(200, 100, 20000, 10000);
-			ae1.rotate(720.0, 2000, 2000);
+			//ae1.rotate(720.0, 2000, 2000);
+			ae1.scaleX(1.0 / 3.0, 30000, 0);
 			ae1.scaleX(3.0, 30000, 0);
-			ae1.scaleX(1.0 / 3, 300, 30000);
+			ae1.scaleX(1.0 / 3.0, 300, 30000);
 			ae1.transformImageAlpha(1.0f, 25000, 0);
 			ae1.transformImageAlpha(0.5f, 5000, 25000);
-	
+				
 			ae2.translate(200, 100, 10000, 0);
-			ae2.rotate(360.0, 10000, 0);
+			//ae2.rotate(360.0, 10000, 0);
 			ae2.scaleX(2.0, 10000, 0);
 			ae2.scaleY(0.333, 10000, 10000);
 			ae2.scaleX(0.333, 1000, 15000);
-			ae2.transformImageAlpha(0.0f, 30000, 1000);
+			//ae2.transformImageAlpha(0.0f, 30000, 1000);
 			
 			ae3.translate(300, 300, 10000, 1000);
 			ae3.translate(-300, -300, 5000, 20000);
-			ae3.rotate(1080.0, 30000, 500);
+			//ae3.rotate(1080.0, 30000, 500);
 			ae3.scaleY(3.0, 10000, 0);
 			ae3.scaleY(0.333, 10000, 10000);
-			//ae3.rotate(1079.0, 30000, 500);
 			ae3.transformImageAlpha(0.0f, 30000, 1000);
 			
 			ae4.translate(-300, -300, 6000, 0);
 			ae4.translate(300, 300, 25000, 6000);
-			//ae4.rotate(-9710.0, 30000, 0);
 			ae4.rotate(9720.0, 30000, 0);
 			//ae4.scaleX(4.0, 20000, 0);
 			ae4.addAnimationSequence(".//img//animations", 50L, 6);
-			ae4.transformImageAlpha(0.0f, 30000, 1000);
+			//ae4.transformImageAlpha(0.0f, 30000, 1000);
 		
 			ae5.translateX(-450, 0L, 0L);
 			ae5.translateX(1400, 15000L, 1L);
-			//ae4.rotate(-9710.0, 30000, 0);
-			//ae5.rotate(9720.0, 30000, 0);
-			//ae4.scaleX(4.0, 20000, 0);
 			ae5.addAnimationSequence(".//img//animations", 50L, 6);
 			ae5.transformImageAlpha(0.0f, 3000, 1000);
 			ae5.transformImageAlpha(1.0f, 500, 4500);
-			
-			//System.out.println(ae5.getSpacialInterpolators());
-			//System.out.println(ae5.getImageInterpolators());
 		};
 		this.animationElementList.add(ae1);
 		this.animationElementList.add(ae2);
@@ -146,9 +137,9 @@ public class AnimationModel implements Subject {
 		});
 		r.run();
 	}
-	//public void setFrameRate(int frameRate) {
-	//	this.frameRate = frameRate;
-	//}
+	public void setFrameRate(int frameRate) {
+		this.frameRate = frameRate;
+	}
 	@Override
 	public void registerObserver(Observer o) {
 		this.observers.add(o);
