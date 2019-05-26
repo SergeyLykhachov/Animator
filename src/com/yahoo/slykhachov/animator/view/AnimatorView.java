@@ -17,10 +17,6 @@ import com.yahoo.slykhachov.animator.Animation;
 import com.yahoo.slykhachov.animator.model.AnimationModel;
 
 public class AnimatorView extends JFrame {
-	//private DictionaryPanel dictPanel;
-	//private TextEditorPanel textPanel;
-	//private StackPanel stackPanel;
-	//private TerminalPanel terminalPanel;
 	private AnimationView animationView;
 	public AnimatorView(Animation animation) {
 		super("Animator");
@@ -39,80 +35,15 @@ public class AnimatorView extends JFrame {
 		panel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.BOTH;
-    	c.weightx = 1.0;//0.66;
-    	c.weighty = 1.0;//0.66;
-    	c.gridx = 0;
-    	c.gridy = 0;
-    	//c.gridheight = 2;
+    		c.weightx = 1.0;//0.66;
+    		c.weighty = 1.0;//0.66;
+    		c.gridx = 0;
+    		c.gridy = 0;
 		panel.add(
 			animationView,
 			c
 		);
 		return panel;
-		//JPanel panel = new JPanel();
-		//panel.setLayout(new GridBagLayout());
-		//panel.setPreferredSize(new Dimension(1000, 1000));
-		//panel.setBackground(Color.BLACK);
-		//GridBagConstraints c = new GridBagConstraints();
-		//c.fill = GridBagConstraints.BOTH;
-    	//c.weightx = 0.66;
-    	//c.weighty = 0.66;
-    	//c.gridx = 0;
-    	//c.gridy = 0;
-    	//c.gridheight = 2;
-		//this.textPanel = new TextEditorPanel();
-		//panel.add(
-		//	this.textPanel,
-		//	c
-		//);
-		//c.weightx = 0.33;
-		//c.weighty = 0.33;
-		//c.gridx = 2;
-    	//c.gridy = 0;
-    	//c.gridheight = 1;
-		//this.stackPanel = new StackPanel();
-		//stackPanel.setBorder(
-		//	new CompoundBorder(
-		//		new BevelBorder(BevelBorder.RAISED),
-		//		new EtchedBorder()
-		//	)
-		//);
-		//panel.add(
-		//	stackPanel,
-		//	c
-		//);
-		//c.weightx = 0.33;
-		//c.weighty = 0.33;
-		//c.gridx = 2;
-    	//c.gridy = 1;
-		//this.dictPanel = new DictionaryPanel();
-		//dictPanel.setBorder(
-		//	new CompoundBorder(
-		//		new BevelBorder(BevelBorder.RAISED),
-		//		new EtchedBorder()
-		//	)
-		//);
-		//panel.add(
-		//	dictPanel,
-		//	c
-		//);
-		//c.weightx = 1;
-		//c.weighty = 0.33;
-		//c.gridx = 0;
-    	//c.gridy = 2;
-    	//c.gridwidth = 3;
-		//this.terminalPanel = new TerminalPanel(dictPanel);
-		//terminalPanel.setBorder(
-		//	new CompoundBorder(
-		//		new BevelBorder(BevelBorder.RAISED),
-		//		new EtchedBorder()
-		//	)
-		//);
-		//panel.add(
-		//	terminalPanel,
-		//	c
-		//);
-		//return panel;
 	}
 	private JToolBar createToolBar(AnimationModel animationModel) {
 		JToolBar jtb = new JToolBar();
