@@ -1,13 +1,13 @@
 package com.yahoo.slykhachov.animator.view;
 
 //import java.awt.AlphaComposite;
-import java.awt.Color;////////
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
-import java.awt.geom.Ellipse2D;///////////////
+import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
@@ -19,12 +19,10 @@ import com.yahoo.slykhachov.animator.model.AnimationModel;
 import com.yahoo.slykhachov.animator.util.*;
 
 public class AnimationView extends JPanel implements Observer {
-	//private AffineTransform at;
 	private AnimationModel animationModel;
 	public AnimationView(Dimension dimension, AnimationModel animationModel) {
 		super.setPreferredSize(dimension);
 		this.animationModel = animationModel;
-		//this.at = new AffineTransform();
 		this.setBorder(
 			new CompoundBorder(
 				new BevelBorder(BevelBorder.RAISED),
@@ -42,7 +40,7 @@ public class AnimationView extends JPanel implements Observer {
 		Graphics2D g2d = (Graphics2D) g.create();
 		Queue<TransformGroup> childrenQueue = new MyQueue<>(
 			this.animationModel.getRootAnimationElement()
-							   .getChildren()
+				.getChildren()
 		);
 		g2d.drawRenderedImage(
 			this.animationModel.getRootAnimationElement()
@@ -61,7 +59,7 @@ public class AnimationView extends JPanel implements Observer {
 		}
 		
 		java.awt.Shape shape1 = new Ellipse2D.Double(0 - 5, 0 - 5, 10, 10);
-        java.awt.Shape shape2 = new Ellipse2D.Double(200 - 5, 100 - 5, 10, 10);
+        	java.awt.Shape shape2 = new Ellipse2D.Double(200 - 5, 100 - 5, 10, 10);
 		
 		java.awt.Shape shape3 = new Ellipse2D.Double(220 - 5, 330 - 5, 10, 10);
 		java.awt.Shape shape4 = new Ellipse2D.Double(620 - 5, 530 - 5, 10, 10);
